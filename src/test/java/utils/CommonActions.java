@@ -15,6 +15,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
+import org.testng.SkipException;
 
 import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.Sequence;
@@ -1813,6 +1814,79 @@ public class CommonActions {
 
         System.out.println("Selected Random Date (this month, not Sunday): " + formattedDate);
         return xpath;
+    }
+
+    public void skipIfDisplayed(String xpathVal) {
+        By locator = By.xpath(xpathVal);
+        List<WebElement> elements = driver.findElements(locator);
+
+        if (!elements.isEmpty() && elements.get(0).isDisplayed()) {
+            throw new SkipException("⚠️ No data found. Skipping this test case.");
+        }
+    }
+
+    public void assertGiftPresent(String scrollViewContainerXpath, String expectedGift) {
+        // Create local WebDriverWait (10 sec or adjust as per your framework)
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        // Wait for the ScrollView container to appear
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(scrollViewContainerXpath)));
+
+        // Get all descendants inside the ScrollView container
+        List<WebElement> allElements = driver.findElements(By.xpath(scrollViewContainerXpath + "//*"));
+
+        boolean found = false;
+
+        for (WebElement el : allElements) {
+            String contentDesc = el.getAttribute("content-desc");
+            String text = el.getText();
+
+            if ((contentDesc != null && contentDesc.equalsIgnoreCase(expectedGift)) ||
+                    (text != null && text.equalsIgnoreCase(expectedGift))) {
+                found = true;
+                System.out.println("✅ Gift '" + expectedGift + "' found in ScrollView.");
+                break;
+            }
+        }
+
+        // Use TestNG assertion
+        Assert.assertTrue(found, "❌ Gift '" + expectedGift + "' not found in ScrollView!");
+    }
+
+    public String selectRandom(String containerChildXpath) {
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(containerChildXpath)));
+
+        List<WebElement> groups = driver.findElements(By.xpath(containerChildXpath));
+        int total = groups.size();
+        System.out.println(" Total items found: " + total);
+
+        if (total == 0) {
+            System.out.println("️ No groups found to select.");
+            return null;
+        }
+
+        // Pick a random index
+        int index = random.nextInt(total);
+        WebElement chosen = groups.get(index);
+
+        wait.until(ExpectedConditions.elementToBeClickable(chosen));
+        System.out.println(" Clicking the item at index: " + (index + 1));
+        chosen.click();
+
+        // Now look for any child element having content-desc (like "IOXI 30")
+        List<WebElement> descElements = chosen.findElements(By.xpath(".//android.view.ViewGroup[@content-desc]"));
+        String selectedText = "";
+
+        if (!descElements.isEmpty()) {
+            selectedText = descElements.get(0).getAttribute("content-desc");
+            System.out.println(" Extracted content-desc: " + selectedText);
+        } else {
+            // Fallback: if no content-desc found, try getText()
+            selectedText = chosen.getText();
+            System.out.println(" No content-desc found, fallback text: " + selectedText);
+        }
+
+        return selectedText;
     }
 
 
