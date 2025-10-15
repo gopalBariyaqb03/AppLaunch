@@ -1,0 +1,31 @@
+# Maven build
+/target/
+/logs/
+/test-output/
+/reports/
+
+# IntelliJ IDEA / IDE files
+/.idea/
+/*.iml
+/.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# App files
+*.apk
+*.ipa
+
+# Node / Appium / npm
+node_modules/
+
+# Local environment / credentials
+.env
+*.properties
+*.jks
+secrets.properties
+
+# Emulator / temporary files
+*.log
+*.tmp
