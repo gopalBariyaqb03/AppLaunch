@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Master Test Suite">
+
+    <listeners>
+        <listener class-name="listeners.TestListener"/>
+    </listeners>
+
+    <!-- Verify doctor creation scenario -->
+    <test name="Verify doctor creation scenario">
+        <classes>
+            <class name="tests.MasterTest">
+                <methods>
+                    <include name="verifyDoctorCreation"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <!-- Verify doctor update scenario -->
+    <test name="Verify doctor update scenario">
+        <classes>
+            <class name="tests.MasterTest">
+                <methods>
+                    <include name="verifyDoctorUpdateScenario"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <!-- Verify doctor delete scenario -->
+    <test name="Verify doctor delete scenario">
+        <classes>
+            <class name="tests.MasterTest">
+                <methods>
+                    <include name="verifyDoctorDelete"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <!-- Verify chemist creation scenario -->
+    <test name="Verify doctor creation scenario">
+        <classes>
+            <class name="tests.MasterTest">
+                <methods>
+                    <include name="verifyChemistCreation"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <!-- Verify update chemist scenario -->
+    <test name="Verify chemist update scenario">
+        <classes>
+            <class name="tests.MasterTest">
+                <methods>
+                    <include name="verifyUpdateChemistScenario"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <!-- Verify chemist delete scenario -->
+    <test name="Verify chemist delete scenario">
+        <classes>
+            <class name="tests.MasterTest">
+                <methods>
+                    <include name="verifyChemistDelete"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <!-- Verify stockiest creation scenario -->
+    <test name="Verify stockiest creation scenario">
+        <classes>
+            <class name="tests.MasterTest">
+                <methods>
+                    <include name="verifyStockiestCreation"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <!-- Verify update stockiest scenario -->
+    <test name="Verify stockiest update scenario">
+        <classes>
+            <class name="tests.MasterTest">
+                <methods>
+                    <include name="verifyUpdateStockiestScenario"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <!-- Verify stockiest delete scenario -->
+    <test name="Verify stockiest delete scenario">
+        <classes>
+            <class name="tests.MasterTest">
+                <methods>
+                    <include name="verifyStockiestDelete"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>

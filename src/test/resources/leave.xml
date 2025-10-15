@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Leave Test Suite">
+
+    <listeners>
+        <listener class-name="listeners.TestListener"/>
+    </listeners>
+
+    <!-- Verify to test half leave creation scenario -->
+    <test name="Verify to check half leave scenario">
+        <classes>
+            <class name="tests.LeaveTest">
+                <methods>
+                    <include name="verifyToTestAddHalfLeaveFunctionality"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <!-- Verify to test add full leave creation scenario -->
+    <test name="Verify to check leave scenario">
+        <classes>
+            <class name="tests.LeaveTest">
+                <methods>
+                    <include name="verifyToTestAddFullLeaveFunctionality"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <!-- Verify to test add multiple add leave creation scenario -->
+    <test name="Verify to test multiple leave scenario">
+        <classes>
+            <class name="tests.LeaveTest">
+                <methods>
+                    <include name="verifyToTestAddMultipleLeaveFunctionality"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>

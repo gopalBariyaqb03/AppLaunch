@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Other page test cases">
+
+    <listeners>
+        <listener class-name="listeners.TestListener"/>
+    </listeners>
+
+    <!-- Verify Create vendor scenario -->
+    <test name="Verify Create vendor scenario">
+        <classes>
+            <class name="tests.OtherTest">
+                <methods>
+                    <include name="verifyVendorCreationFunctionality"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>

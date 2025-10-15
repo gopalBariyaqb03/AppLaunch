@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Email Test Suite">
+
+    <listeners>
+        <listener class-name="listeners.TestListener"/>
+    </listeners>
+
+    <!-- Verify Create An Email Scenario -->
+    <test name="Verify Create An Email Scenario">
+        <classes>
+            <class name="tests.EmailTest">
+                <methods>
+                    <include name="VerifyCreateAnEmailScenario"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <!-- Verify Draft Email Functionality -->
+    <test name="Verify Draft Email Functionality">
+        <classes>
+            <class name="tests.EmailTest">
+                <methods>
+                    <include name="verifyDraftEmailFunctionality"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>
